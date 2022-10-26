@@ -1,0 +1,20 @@
+#sim1.sub
+universe = vanilla
+log = example_$(Cluster).log
+executable = sim1.sh
+arguments = $(Process)
+output = example_$(Cluster)_$(Process).out
+error = example_$(Cluster)_$(Process).err
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+
+transfer_input_files= sim1.sh
+
+Requirements = (Target.HasCHTCStaging == true)
+
+request_cpus = 1
+request_memory = 10GB 
+request_disk = 16GB
+
+queue 1 
